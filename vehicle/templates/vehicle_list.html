@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block title_block%}
+<title>Vehicle List</title>
+{%endblock%}
+{%block body_block%}
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Name</td>
+                        <td>Model</td>
+                        <td>Year</td>
+                        <td>Price</td>
+                        <td>Owner</td>
+                        <td>Mob</td>
+                        <td>Action</td>
+                    </tr>
+                    {% for v in vehicles%}
+                    <tr>
+                        <td>{{v.name}}</td>
+                        <td>{{v.model}}</td>
+                        <td>{{v.year}}</td>
+                        <td>{{v.price}}</td>
+                        <td>{{v.owner}}</td>
+                        <td>{{v.mob}}</td>
+                        <td>
+                            <a href="{%url 'vehicle-detail' v.id%}">View</a>
+                            <a href="{%url 'vehicle-change' v.id%}">Edit</a>
+                            <a href="{%url 'vehicle-remove' v.id%}">Delete</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+{%endblock%}
